@@ -1,153 +1,176 @@
 #include <stdio.h>
+#include "main2.c"
 #include "gato.h"
+#include "Tablero.h"
 
 void mostrar_tablero();
+void tablero();
 int movimientos();
 
 void mostrar_talero(){
 
   int op;
+  char partida[3][3];
 
   op = movimientos();
 
-  switch(op){
-    case 1:
-    printf("         |        |       ");
-    printf("   %c    |    2   |   3  ",);
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    4    |   5    |   6  ");
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    7    |    8   |   9  ");
-    printf("         |        |       ");
-    break;
+  if(){
+    switch(op){
 
-    case 2:
-    printf("         |        |       ");
-    printf("    1    |   %c   |   3  ",);
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    4    |   5    |   6  ");
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    7    |    8   |   9  ");
-    printf("         |        |       ");
-    break;
+      case 1:
+      partida[0][0] = 'X';
+      printf("         |        |       \n");
+      printf("   %c    |        |      \n",);
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("         |        |       \n");
+      break;
 
-    case 3:
-    printf("         |        |       ");
-    printf("    1    |    2   |   %c  ",);
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    4    |   5    |   6  ");
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    7    |    8   |   9  ");
-    printf("         |        |       ");
-    break;
+      case 2:
+      printf("         |        |       \n");
+      printf("         |   %c   |      \n",);
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("         |        |       \n");
+      break;
 
-    case 4:
-    printf("         |        |       ");
-    printf("    1    |    2   |   3  ");
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("   %c    |   5    |   6  ",);
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    7    |    8   |   9  ");
-    printf("         |        |       ");
-    break;
+      case 3:
+      printf("         |        |       \n");
+      printf("         |        |   %c  \n",);
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("         |        |       \n");
+      break;
 
-    case 5:
-    printf("         |        |       ");
-    printf("    1    |    2   |   3  ");
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    4    |   %c   |   6  ",);
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    7    |    8   |   9  ");
-    printf("         |        |       ");
-    break;
+      case 4:
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("   %c    |        |      \n",);
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("         |        |       \n");
+      break;
 
-    case 6:
-    printf("         |        |       ");
-    printf("    1    |    2   |   3  ");
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    4    |   5    |   %c  ",);
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    7    |    8   |   9  ");
-    printf("         |        |       ");
-    break;
+      case 5:
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("         |   %c   |      \n",);
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("         |        |       \n");
+      break;
 
-    case 7:
-    printf("         |        |       ");
-    printf("    1    |    2   |   3  ");
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    4    |   5    |   6  ");
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    %c   |    8   |   9  ");
-    printf("         |        |       ");
-    break;
+      case 6:
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("         |        |   %c  \n",);
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("         |        |       \n");
+      break;
 
-    case 8:
-    printf("         |        |       ");
-    printf("    1    |    2   |   3  ");
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    4    |   5    |   6  ");
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    7    |   %c   |   9  ");
-    printf("         |        |       ");
-    break;
+      case 7:
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("    %c   |        |      \n",);
+      printf("         |        |       \n");
+      break;
 
-    case 9:
-    printf("         |        |       ");
-    printf("    1    |    2   |   3  ");
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    4    |   5    |   6  ");
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    7    |    8   |   %c  ",);
-    printf("         |        |       ");
-    break;
+      case 8:
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("         |   %c   |      \n",);
+      printf("         |        |       \n");
+      break;
+
+      case 9:
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("         |        |      \n");
+      printf("_________+________+_______\n");
+      printf("         |        |       \n");
+      printf("         |        |   %c  \n",);
+      printf("         |        |       \n");
+      break;
+    }
   }
 
-
-    printf("         |        |       ");
-    printf("   %c    |   %c   |   %c  ",);
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("   %c    |   %c   |   %c  ",);
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("   %c    |   %c   |   %c  ",);
-    printf("         |        |       ");
+  if(){
+    printf("         |        |       \n");
+    printf("   %c    |   %c   |   %c  \n",);
+    printf("_________+________+_______\n");
+    printf("         |        |       \n");
+    printf("   %c    |   %c   |   %c  \n",);
+    printf("_________+________+_______\n");
+    printf("         |        |       \n");
+    printf("   %c    |   %c   |   %c  \n",);
+    printf("         |        |       \n");
+  }
 }
 
-int movimiento(){
+int movimientos(){
 
   int op;
 
-    printf("         |        |       ");
-    printf("    1    |    2   |   3  ");
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    4    |   5    |   6  ");
-    printf("_________+________+_______");
-    printf("         |        |       ");
-    printf("    7    |    8   |   9  ");
-    printf("         |        |       ");
+    printf("         |        |       \n");
+    printf("    1    |    2   |   3  \n");
+    printf("_________+________+_______\n");
+    printf("         |        |       \n");
+    printf("    4    |   5    |   6  \n");
+    printf("_________+________+_______\n");
+    printf("         |        |       \n");
+    printf("    7    |    8   |   9  \n");
+    printf("         |        |       \n");
 
     printf("Escoger posicion: ");
     scanf("%i",&op);
 
     return op;
+}
+
+void tablero(int partida*){
+  
+    printf("         |        |       \n");
+    printf("   %c    |   %c   |   %c  \n",partida[0][0],partida[0][1],partida[0][2]);
+    printf("_________+________+_______\n");
+    printf("         |        |       \n");
+    printf("   %c    |   %c   |   %c  \n",partida[1][0],partida[1][1],partida[1][2]);
+    printf("_________+________+_______\n");
+    printf("         |        |       \n");
+    printf("   %c    |   %c   |   %c  \n",partida[2][0],partida[2][1],partida[2][2]);
+    printf("         |        |       \n");
+
 }
