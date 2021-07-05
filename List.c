@@ -5,8 +5,10 @@
 
 typedef struct Node Node;
 
+typedef Node *tpuntero;
+
 struct Node {
-    const void * data;
+    char * data;
     Node * next;
     Node * prev;
 };
@@ -19,7 +21,7 @@ struct List {
 
 typedef List List;
 
-Node * createNode(const void * data) {
+Node * createNode( char * data) {
     Node * new = (Node *)malloc(sizeof(Node));
     assert(new != NULL);
     new->data = data;
@@ -38,28 +40,28 @@ List * createList() {
 void * firstList(List * list) {
     if (list == NULL || list->head == NULL) return NULL;
     list->current = list->head;
-    return (void *)list->current->data;
+    return (char *)list->current->data;
 }
 
 void * nextList(List * list) {
     if (list == NULL || list->head == NULL || list->current == NULL || list->current->next == NULL) return NULL;
     list->current = list->current->next;
-    return (void *)list->current->data;
+    return (char *)list->current->data;
 }
 
 void * lastList(List * list) {
     if (list == NULL || list->head == NULL) return NULL;
     list->current = list->tail;
-    return (void *)list->current->data;
+    return (char *)list->current->data;
 }
 
 void * prevList(List * list) {
     if (list == NULL || list->head == NULL || list->current == NULL || list->current->prev == NULL) return NULL;
     list->current = list->current->prev;
-    return (void *)list->current->data;
+    return (char *)list->current->data;
 }
 
-void pushFront(List * list, const void * data) {
+void pushFront(List * list, char * data) {
     assert(list != NULL);
     
     Node * new = createNode(data);
@@ -74,13 +76,13 @@ void pushFront(List * list, const void * data) {
     list->head = new;
 }
 
-void pushBack(List * list, const void * data) {
+void pushBack(List * list, char * data) {
     list->current = list->tail;
     if(list->current==NULL) pushFront(list,data);
     else pushCurrent(list,data);
 }
 
-void pushCurrent(List * list, const void * data) {
+void pushCurrent(List * list, char * data) {
     assert(list != NULL && list->current !=NULL);
     Node * new = createNode(data);
 
@@ -122,7 +124,7 @@ void * popCurrent(List * list) {
         aux->prev->next = aux->next;
     
     
-    void * data = (void *)aux->data;
+    char * data = (char *)aux->data;
     
     if(list->current == list->tail)
         list->tail = list->current->prev;

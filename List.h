@@ -13,11 +13,11 @@ void * lastList(List * list);
 
 void * prevList(List * list);
 
-void pushFront(List * list, const void * data);
+void pushFront(List * list, char * data);
 
-void pushBack(List * list, const void * data);
+void pushBack(List * list, char * data);
 
-void pushCurrent(List * list, const void * data);
+void pushCurrent(List * list, char * data);
 
 void * popFront(List * list);
 

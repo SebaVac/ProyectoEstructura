@@ -1,55 +1,26 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "Map.h"
+#include <stdlib.h>
+#include "Game.h"
 #include "Tablero.h"
 
-int main(){
 
-  int op = 0;
-  int pos;
-  char ficha;
-  char nick[20];
-  char partida[3][3];
-  bool fin = false;
+void juego_sin_guardar(){
+
   bool finAux = false;
-  char resultado[10];
+  bool fin = false;
+  bool finPos = false;
+  char partida[3][3];
+  char ficha;
+  int pos;
+  int posAux[9];
 
-
-  //Map* Map = createMap(); //crear mapa
-
-  do{
-
-    printf("   1. Iniciar sesion\n");
-    printf("   2. Registrarse\n");
-    printf("   3. Jugar como invitado\n");
-    printf("   4. Salir\n\n");
-    printf("   Escribir el numero de la opcion correspondiente: ");
-    scanf("%i", &op);
-    printf("\n\n");
-
-    if((op > 4) || (op < 1)){
-      printf("Opcion invalida, intentelo nuevamente\n");
-    }
-
-  }while((op > 5) || (op < 0));
-
-  if(op == 1){
-    printf("Ingrese su Nick de usuario: ");
-    //nick  =  ; //se ingresa un nick a buscar
-    
-    //searchMap(Map, nick);
-    
+  for(int i=0;i<9;i++){
+    posAux[i] = 1;
   }
-
-  if(op == 2){
-    printf("Ingrese su Nick de usuario: ");
-    //nick = ; //se ingresa el nuevo nick y se crea una lista, la cual se guarda como contenido dentro del mapa de nicks
-
-    
-  }
-
-  if(op == 3){
-    printf("Cargando tablero\n\n");
+  printf("____________________\n\n");
+  printf("  Cargando tablero  \n");
+  printf("____________________\n\n\n");
     //se comienza la partida sin guardar datos(no lista, no mapa), se muestra el tablero y el grafo comienza a ejecutarse en su respectivo turno
 
     mostrar_tablero(); //se muestra el tablero vacio
@@ -62,7 +33,6 @@ int main(){
     }
 
     int cont = 0;
-
     do{
 
     if(finAux != true){
@@ -73,7 +43,37 @@ int main(){
         ficha = 'O';
       }
 
-      pos = movimientos();
+      do{
+
+        if(cont%2 == 0){
+
+          pos = movimientos();//movimiento del jugador
+
+          if(posAux[pos-1] != 0){
+            posAux[pos-1] = 0;
+            finPos = true;
+          }else{
+            printf("\n\n");
+            printf("_______________________________________\n\n");
+            printf("Posicion ya ocupada, intente nuevamente\n");
+            printf("_______________________________________\n\n");
+            finPos = false;
+          }
+
+        }else{
+          pos = rand() % 10;//movimiento bot
+
+          if(posAux[pos-1] != 0){
+            posAux[pos-1] = 0;
+            finPos = true;
+          }else{
+            finPos = false;
+          }
+        }
+
+      }while(finPos == false);
+
+
       if(pos == 1){
         partida[0][0] = ficha;
         tablero(partida);
@@ -129,6 +129,7 @@ int main(){
           printf("\n\n");
           if(partida[0][0] == 'X'){
             printf("¡Victoria para el jugador!\n");
+
           }else{
             printf("¡Perdiste! Victoria para la CPU\n");
           }
@@ -232,7 +233,7 @@ int main(){
       if((partida[0][2] == 'X') || (partida[0][2] == 'O')){
         if((partida[0][2] == partida[1][1]) && (partida[1][1] == partida[2][0])){
           printf("\n\n");
-          if(partida[0][0] == 'X'){
+          if(partida[0][2] == 'X'){
             printf("¡Victoria para el jugador!\n");
           }else{
             printf("¡Perdiste! Victoria para la CPU\n");
@@ -243,21 +244,15 @@ int main(){
         }
       }
     }
-    
 
-
-
-
-    if(cont == 9) fin = true; //no hay mas movimientos
+    if(cont == 9){ 
+      fin = true; //no hay mas movimientos
+      printf("\n\n");
+      printf("_______________________________________\n\n");
+      printf("Se ha declarado... ¡EMPATE!\n");
+      printf("_______________________________________\n\n");
+      break;
+    }
 
     }while((fin != true) || (finAux != true));
-    
-  }
-
-  if(op == 4){
-    printf("¡Vuelva pronto!\n");
-    return 0;
-  }
-
-  return 0;
 }
