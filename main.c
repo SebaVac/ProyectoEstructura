@@ -53,7 +53,7 @@ int main(){
         printf("______________________\n\n");
         printf("-Utilice un maximo de 20 caracteres contando espacios-\n\n");
         printf("Ingrese su Nick de usuario: ");
-        //se ingresa el nuevo nick y se crea una lista, la cual se guarda como contenido dentro del mapa de nicks
+        //se ingresa el nuevo nick que sera la key del mapa y se crea una lista, la cual se guarda como contenido dentro del mapa de nicks
         scanf("%s", nick);
 
         List* list = createList();
@@ -82,9 +82,10 @@ int main(){
         printf("Ingrese su Nick de usuario: ");
         scanf("%s", nick);//se ingresa un nick a buscar
 
-        if (searchMap(Map,nick) != NULL){
+        if(searchMap(Map, nick) != NULL){
           printf("___________________________________\n");
           printf("\nHas iniciado sesion correctamente\n");
+          printf("\nBienvenido %s\n",nick);
           printf("___________________________________\n\n");
 
           /*buscar lista para ingresar resultado de la sgte partida*/
@@ -104,28 +105,33 @@ int main(){
 
           /*se imprimen por pantalla los resultados anteriores*/
           list = searchMap(Map, nick);
-          printf("___________________________\n\n");
-          printf("Se imprime la lista cargada\n");
-          printf("___________________________\n\n");
-            
-          /*se muestra por pantalla los resultados anteriores con first y next*/
-          char * top = firstList(list);
 
-          while(top != NULL){
-            printf("* %s\n", top);
-            top = nextList(list);
-          }
+          if(firstList(list) != NULL){
+            printf("______________________________\n\n");
+            printf("Cargando resultados anteriores\n");
+            printf("______________________________\n\n");
+              
+            /*se muestra por pantalla los resultados existentes con firstList y nextList*/
+            char * top = firstList(list);
 
-          printf("_______________________________________________\n\n");
-          printf("Se han mostrado todos los elementos de la lista\n");
-          printf("_______________________________________________\n\n");
-
+            while(top != NULL){
+              printf("* %s\n", top);
+              top = nextList(list);
+            }
+              printf("_______________________________________________\n\n");
+              printf("Se han mostrado todos los resultados existentes\n");
+              printf("_______________________________________________\n\n\n\n");
+            }else{
+              printf("________________________________\n\n");
+              printf("No existen resultados anteriores\n");
+              printf("________________________________\n\n\n\n");
+            }
           }
 
         }else{
           printf("______________________\n\n");
           printf("Este usuario no existe\n");
-          printf("______________________\n\n");
+          printf("______________________\n\n\n\n");
         }
         
       break;
